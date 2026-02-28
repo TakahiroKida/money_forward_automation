@@ -12,6 +12,7 @@ PAY_CATEGORY = {
     'BEISIA': ['食費', '食料品'],
     'DAISO': ['日用品', '日用品'],
     'FOODWAY TUDANUMA': ['食費', '食料品'],
+    'HOBI-SUTE-SHIYON TSUDANUM': ['趣味・娯楽', '映画・音楽・ゲーム'],
     'LIFE CORPORATION': ['食費', '食料品'],
     'MERCARI': ['趣味・娯楽', '映画・音楽・ゲーム'],
     '飲料自販機／ｉＤ': ['食費', '食料品'],
