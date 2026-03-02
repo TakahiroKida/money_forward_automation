@@ -77,7 +77,9 @@ def get_input_datas(gmail:object, config:object) -> list:
                     price = format_price(tmp_dict.get('決済総額', ''))
                     description = tmp_dict.get('ご利用店舗', '').strip()[:50]
                 
+                ####################################################################################################
                 # 共通処理
+                ####################################################################################################
                 if price == '0': continue
                 input_data = {
                     'pay'        : pay if pay in pay_method else '', 
