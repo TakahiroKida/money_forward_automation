@@ -29,7 +29,8 @@ def main():
         ####################################################################################################
         now_task = 'メール確認'
         logger.info(f'{now_task}: 開始')
-        gmail = Gmail_Util(token_path='./token.json')
+        token_path = os.path.join('token_files', config.get('GOOGLE', 'token_file'))
+        gmail = Gmail_Util(token_path=token_path)
         input_datas = get_input_datas(gmail, config)
         logger.info(f'対象: {len(input_datas)}件')
         if not input_datas: return
