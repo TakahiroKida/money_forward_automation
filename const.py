@@ -5,8 +5,10 @@ PAY_CATEGORY = {
     # ANA
     'AEON GROUP': ['食費', '食料品'],
     'BEISIA': ['食費', '食料品'],
+    'BELC FORTE TSUDANUMATEN': ['食費', '食料品'],
     'DAISO': ['日用品', '日用品'],
     'FOODWAY TUDANUMA': ['食費', '食料品'],
+    'HIMARAYATUDANUMATENN' ['食費', '外食'],
     'HOBI-SUTE-SHIYON TSUDANUM': ['趣味・娯楽', '映画・音楽・ゲーム'],
     'LIFE CORPORATION': ['食費', '食料品'],
     'MERCARI': ['趣味・娯楽', '映画・音楽・ゲーム'],
