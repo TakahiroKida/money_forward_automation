@@ -1,6 +1,5 @@
 import logging
 import os
-from const import MAIL_LABEL, PAY_METHOD
 from utils.common_functions import str_2_datetime
 
 logging.basicConfig(level=logging.INFO)
@@ -13,7 +12,9 @@ def get_input_datas(gmail:object, config:object) -> list:
     '''
     result_list = []
     format_price = lambda x: x.replace(',', '').replace('￥', '').replace('\\', '').replace('円', '').replace('JPY', '').strip()
-    for pay, label_id in MAIL_LABEL.items():
+    mail_labels = {k.upper(): v for k, v in config['MAIL_LABEL'].items()}
+    pay_method  = {k.upper(): v for k, v in config['PAY_METHOD'].items()}
+    for pay, label_id in mail_labels.items():
         mail_list = gmail.get_messages(label_ids=[label_id], limit=5, is_unread=True)
         for mail in mail_list:
             try:
@@ -79,7 +80,7 @@ def get_input_datas(gmail:object, config:object) -> list:
                 # 共通処理
                 if price == '0': continue
                 input_data = {
-                    'pay'        : pay if pay in PAY_METHOD else '', 
+                    'pay'        : pay if pay in pay_method else '', 
                     'date'       : date,
                     'price'      : price,
                     'description': description,

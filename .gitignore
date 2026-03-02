@@ -1,4 +1,5 @@
 *_env/
 __pycache__/
+initials/*
+!initials/template.ini
 *.json
-*.ini

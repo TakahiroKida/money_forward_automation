@@ -2,7 +2,7 @@ import logging
 import os
 import re
 import sys
-from const import *
+from const import PAY_CATEGORY
 from utils.chrome_util import Chrome_Util
 
 logging.basicConfig(level=logging.INFO)
@@ -44,7 +44,7 @@ def login(chrome:object, gmail:object, config:object):
         chrome.find_element('id', 'submitto').js_click()
         logger.info('ログインPW入力: 完了')
         # ワンタイムパスワード取得
-        onetime_mail_label_id = config.get('GMAIL', 'onetime_mail_label_id')
+        onetime_mail_label_id = config.get('MAIL_LABEL', 'onetime_mail_label_id')
         for i in range(1, 11):
             logger.info(f'{i}回目: 5秒待機...')
             chrome.load_wait(sleep_time=5)
@@ -66,10 +66,11 @@ def login(chrome:object, gmail:object, config:object):
         import pdb;pdb.set_trace()
     
 
-def input_amount(chrome:object, input_datas:dict):
+def input_amount(chrome:object, config:object, input_datas:dict):
     '''
     金額入力
     '''
+    pay_method  = {k.upper(): v for k, v in config['PAY_METHOD'].items()}
     input_link = chrome.find_element('css_selector', '.pull-right.more-link').get_attribute('href')
     for i, input_data in enumerate(input_datas, start=1):
         logger.info(f'{i}件目のデータ入力: 開始')
@@ -88,7 +89,7 @@ def input_amount(chrome:object, input_datas:dict):
         # 支出元入力
         if (pay:=input_data.get('pay')):
             tgt_select = chrome.find_element('id', 'user_asset_act_sub_account_id_hash').select
-            tgt_select.select_by_value(PAY_METHOD.get(pay))
+            tgt_select.select_by_value(pay_method.get(pay))
             logger.info(f'支出元: {pay}')
         # PAY_CATEGORY
         description = input_data.get('description')

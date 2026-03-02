@@ -17,8 +17,11 @@ def main():
         ####################################################################################################
         now_task = 'Chrome起動'
         logger.info(f'{now_task}: 開始')
+        if len(sys.argv) < 2:
+            raise Exception('iniファイル名を引数に入れてください')
+        config_path = os.path.join('initials', sys.argv[-1])
         config = ConfigParser()
-        config.read('./config.ini', encoding='utf-8')
+        config.read(config_path, encoding='utf-8')
         logger.info(f'{now_task}: 完了')
 
         ####################################################################################################
@@ -53,7 +56,7 @@ def main():
         ####################################################################################################
         now_task = '金額入力'
         logger.info(f'{now_task}: 開始')
-        input_amount(chrome, input_datas)
+        input_amount(chrome, config, input_datas)
         logger.info(f'{now_task}: 完了')
 
     except Exception as e:
