@@ -14,11 +14,11 @@ def get_input_datas(gmail:object, config:object) -> list:
     format_price = lambda x: x.replace(',', '').replace('￥', '').replace('\\', '').replace('円', '').replace('JPY', '').strip()
     mail_labels = {k.upper(): v for k, v in config['MAIL_LABEL'].items()}
     pay_method  = {k.upper(): v for k, v in config['PAY_METHOD'].items()}
-    income = False
     for pay, label_id in mail_labels.items():
         mail_list = gmail.get_messages(label_ids=[label_id], limit=5, is_unread=True)
         for mail in mail_list:
             try:
+                income = False
                 subject = mail.get('Subject')
                 if pay == 'AMAZON':
                     ####################################################################################################
