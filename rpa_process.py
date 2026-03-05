@@ -76,6 +76,10 @@ def input_amount(chrome:object, config:object, input_datas:dict):
         logger.info(f'{i}件目のデータ入力: 開始')
         chrome.location_href(input_link)
         chrome.load_wait(sleep_time=1)
+        # 入力タイプ選択
+        if input_data.get('income'):
+            chrome.find_element('css_selector', '#info input').js_click()
+            chrome.load_wait(sleep_time=1)
         # 日付入力
         date_ele = chrome.find_element('id', 'updated-at')
         date_ele.clear()

@@ -4,6 +4,7 @@ PAY_CATEGORY = {
     '書籍': ['趣味・娯楽', '本'],
     # ANA
     'AEON GROUP': ['食費', '食料品'],
+    'ANAマイル利用': ['収入', 'ポイ活'],
     'BEISIA': ['食費', '食料品'],
     'BELC FORTE TSUDANUMATEN': ['食費', '食料品'],
     'DAISO': ['日用品', '日用品'],
