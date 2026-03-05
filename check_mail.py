@@ -28,7 +28,7 @@ def get_input_datas(gmail:object, config:object) -> list:
                         # 通常の注文
                         body = mail.get('body').split('注文番号')[-1].split('合計')[0].strip().split('\n\n')[-1]
                         lines = [line.replace('*', '').strip() for line in body.split('\n')]
-                        buy_date = str_2_datetime(mail.get('Date').replace(' (JST)', ''), '%a, %d %b %Y %H:%M:%S %z')
+                        buy_date = str_2_datetime(mail.get('Date'), '%a, %d %b %Y %H:%M:%S %z')
                         date = f'{buy_date.year}/{str(buy_date.month).zfill(2)}/{str(buy_date.day).zfill(2)}'
                         price = int(int(lines[1].replace('数量: ', '')) * int(format_price(lines[2])))
                         description = lines[0][:50]
@@ -70,7 +70,7 @@ def get_input_datas(gmail:object, config:object) -> list:
                         lines = [line for line in mail.get('body').split('\n') if '：' in line]
                         tmp_dict = {split_line[0]: split_line[1] for line in lines if len((split_line:=line.split('：')))==2}
                         if not tmp_dict: continue
-                        buy_date = str_2_datetime(mail.get('Date').replace(' (JST)', ''), '%a, %d %b %Y %H:%M:%S %z')
+                        buy_date = str_2_datetime(mail.get('Date'), '%a, %d %b %Y %H:%M:%S %z')
                         date = f'{buy_date.year}/{str(buy_date.month).zfill(2)}/{str(buy_date.day).zfill(2)}'
                         price = format_price(tmp_dict.get('チャージマイル数', '').replace('マイル', ''))
                         description = 'ANAマイル利用'
