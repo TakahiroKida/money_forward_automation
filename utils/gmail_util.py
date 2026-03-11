@@ -16,7 +16,7 @@ from google.oauth2.credentials import Credentials
 from io import BytesIO
 from typing import Union, List
 
-class Gmail_Util():
+class GmailUtil():
     ####################################################################################################
     # プロパティ
     ####################################################################################################
@@ -226,10 +226,10 @@ class Gmail_Util():
 
 if __name__ == '__main__':
     # credentials_path = './credentials.json'
-    token_path = '../token.json'
+    token_path = './token.json'
     gmail_util = Gmail_Util(token_path=token_path)
-    gmail_util.labels
-    tmp = gmail_util.get_messages(label_ids=['Label_8488675827904555725'], limit=1, is_unread=True)
+    print(gmail_util.labels)
+    # tmp = gmail_util.get_messages(label_ids=['Label_8488675827904555725'], limit=1, is_unread=True)
     # mail = gmail_util.create_mail(to='kida-ta@dym.jp', cc='takahiro.kida.job@gmail.com', subject='TEST', body='テスト送信\n\n改行のてすとも', attachment_files=['./test.txt'])
     # gmail_util.send_mail(mail_data=mail)
 

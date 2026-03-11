@@ -3,13 +3,13 @@ import os
 import re
 import sys
 from const import PAY_CATEGORY
-from utils.chrome_util import Chrome_Util
+from utils.chrome_util import ChromeUtil
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-def get_chrome() -> Chrome_Util:
+def get_chrome() -> ChromeUtil:
     '''
     chrome起動
     '''
@@ -21,7 +21,7 @@ def get_chrome() -> Chrome_Util:
         f'--user-agent={user_agent}',
         '--window-size=1920,1080',
     ]
-    chrome = Chrome_Util(
+    chrome = ChromeUtil(
         options_str_list=options_list,
     )
     chrome.driver.maximize_window()
